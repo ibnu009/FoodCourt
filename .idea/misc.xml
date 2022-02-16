@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_button.xml" value="0.2074074074074074" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_input.xml" value="0.2074074074074074" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/circle.xml" value="0.2203125" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/add_product_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/checkout_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding.xml" value="0.20416666666666666" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.3731656184486373" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.14" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_splash.xml" value="0.16" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/login_fragment.xml" value="0.16" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

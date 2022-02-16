@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.onboarding.OnBoardingSecondFragment">
+
+    <RelativeLayout
+        android:id="@+id/layoutHeader"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSkip"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/skip"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_above="@id/layoutFooter"
+        android:layout_below="@id/layoutHeader"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txvTitleSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/titleText"
+            android:fontFamily="@font/lato_bold"
+            android:layout_marginHorizontal="24dp"
+            android:text="Find solutions for customers"
+            app:layout_constraintTop_toBottomOf="@+id/imgOnboardingSecond" />
+
+        <TextView
+            android:id="@+id/txvDescriptionSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/lato"
+            android:text="find favorite foods for your customers, so that your customers are happy"
+            android:textColor="@color/titleDescription"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/txvTitleSecond" />
+
+        <ImageView
+            android:id="@+id/imgOnboardingSecond"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:src="@drawable/on_boarding_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layoutFooter"
+        android:paddingVertical="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp">
+
+        <ImageButton
+            android:id="@+id/circle1"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/grey_700" />
+
+        <ImageButton
+            android:id="@+id/circle2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/circle1"
+            android:background="@android:color/transparent"
+            android:src="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/circle1"
+            app:tint="@color/grey_500" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/green_button"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/circle2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/circle2" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
