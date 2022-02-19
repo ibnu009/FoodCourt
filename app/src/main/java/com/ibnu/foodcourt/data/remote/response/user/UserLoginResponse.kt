@@ -4,11 +4,12 @@ import com.google.gson.annotations.SerializedName
 import com.ibnu.foodcourt.data.model.User
 
 data class UserLoginResponse(
-    val message: String,
+    val message: String?,
     val user: User,
-    val token: String,
+    val token: String?,
     @field:SerializedName("token_type")
-    val tokenType: String,
+    val tokenType: String?,
+    @field:SerializedName("stand_id")
+    val standId: Int,
     val status: Int
-
 )

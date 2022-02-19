@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.ibnu.foodcourt.utils.ConstVal.KEY_EMAIL
 import com.ibnu.foodcourt.utils.ConstVal.KEY_IS_ALREADY_INTRODUCED
+import com.ibnu.foodcourt.utils.ConstVal.KEY_STAND_ID
 import com.ibnu.foodcourt.utils.ConstVal.KEY_TOKEN
+import com.ibnu.foodcourt.utils.ConstVal.KEY_USER_ID
 import com.ibnu.foodcourt.utils.ConstVal.PREFS_NAME
 
 class SharedPreferenceManager(context: Context) {
@@ -33,6 +35,7 @@ class SharedPreferenceManager(context: Context) {
     }
 
     val getToken = prefs.getString(KEY_TOKEN, "")
-    val getEmail = prefs.getString(KEY_EMAIL, "")
+    val getUserId = prefs.getInt(KEY_USER_ID, 0)
+    val getStandId = prefs.getInt(KEY_STAND_ID, 0)
     val isAlreadyIntroduced = prefs.getBoolean(KEY_IS_ALREADY_INTRODUCED, false)
 }

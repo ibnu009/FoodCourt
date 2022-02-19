@@ -14,6 +14,7 @@ import com.ibnu.foodcourt.R
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.data.remote.request.LoginBody
 import com.ibnu.foodcourt.databinding.LoginFragmentBinding
+import com.ibnu.foodcourt.utils.ConstVal.KEY_STAND_ID
 import com.ibnu.foodcourt.utils.ConstVal.KEY_TOKEN
 import com.ibnu.foodcourt.utils.ConstVal.KEY_USER_ID
 import com.ibnu.foodcourt.utils.SharedPreferenceManager
@@ -23,8 +24,10 @@ import com.ibnu.foodcourt.utils.ext.isEmailValid
 import com.ibnu.foodcourt.utils.ext.popTap
 import com.ibnu.foodcourt.utils.ext.showExitFoodCourtDialog
 import com.ibnu.foodcourt.utils.ext.showOKDialog
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private val viewModel: LoginViewModel by viewModels()
@@ -92,10 +95,13 @@ class LoginFragment : Fragment() {
                 }
                 is ApiResponse.Success -> {
                     showLoading(false)
-                    pref.setStringPreference(KEY_TOKEN, response.data.token)
-                    pref.setIntPreference(KEY_USER_ID, response.data.user.id)
-
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    try {
+                        pref.setStringPreference(KEY_TOKEN, "${response.data.tokenType} ${response.data.token}")
+                        pref.setIntPreference(KEY_USER_ID, response.data.user.id)
+                        pref.setIntPreference(KEY_STAND_ID, response.data.standId)
+                    } finally {
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
                 }
                 else -> {
                     Timber.d("Unknown Error")

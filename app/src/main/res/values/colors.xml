@@ -8,12 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_dim">#74000000</color>
-
+    <color name="secondary_color">#F58634</color>
 
     <color name="titleText">#3D3D3D</color>
     <color name="input_color">#2061B15A</color>
     <color name="titleDescription">#7A7A7A</color>
     <color name="green_button">#61B15A</color>
+    <color name="darker_green_button">#418A3B</color>
 
 
     <color name="grey_50">#FAFAFA</color>

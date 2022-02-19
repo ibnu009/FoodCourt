@@ -1,5 +1,6 @@
 package com.ibnu.foodcourt.di
 
+import com.ibnu.foodcourt.data.remote.network.ProductService
 import com.ibnu.foodcourt.data.remote.network.UserService
 import dagger.Module
 import dagger.Provides
@@ -15,6 +16,11 @@ class ServiceModule {
     @Provides
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    @Provides
+    fun provideProductService(retrofit: Retrofit): ProductService {
+        return retrofit.create(ProductService::class.java)
     }
 
 }

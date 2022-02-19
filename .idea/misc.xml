@@ -3,17 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable-v24/skeleton.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_button.xml" value="0.2074074074074074" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_cirle.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_input.xml" value="0.2074074074074074" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_searchview.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/circle.xml" value="0.2203125" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/skeleton.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/add_product_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/checkout_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding.xml" value="0.20416666666666666" />
-        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.3731656184486373" />
-        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.14" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.2" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding_first.xml" value="0.1" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_splash.xml" value="0.16" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/home_fragment.xml" value="0.16" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/item_category.xml" value="0.5" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/item_menu.xml" value="0.18" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/login_fragment.xml" value="0.16" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/smh_home.xml" value="0.14" />
       </map>
     </option>
   </component>

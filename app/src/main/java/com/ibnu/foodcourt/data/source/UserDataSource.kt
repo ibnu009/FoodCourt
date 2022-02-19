@@ -21,7 +21,7 @@ class UserDataSource @Inject constructor(private val userService: UserService){
                 if (response.status == HttpURLConnection.HTTP_OK){
                     emit(ApiResponse.Success(response))
                 } else {
-                    emit(ApiResponse.Error(response.message))
+                    emit(ApiResponse.Error(response.message ?: "Gagal"))
                 }
             } catch (e: Exception){
                 emit(ApiResponse.Error(e.message.toString()))

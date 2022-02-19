@@ -8,4 +8,10 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="username">Username</string>
+    <string name="menu">Menu</string>
+    <string name="product">Product</string>
+    <string name="email">Email</string>
+    <string name="price_default">Rp 0</string>
+    <string name="item_default">0 items</string>
+    <string name="empty_product">Menu untuk kategori ini kosong, Tambahkan di menu tambah product!</string>
 </resources>
