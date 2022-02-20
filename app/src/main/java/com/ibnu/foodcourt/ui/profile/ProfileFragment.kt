@@ -64,7 +64,7 @@ class ProfileFragment : Fragment() {
         binding.btnAddProduct.setOnClickListener {
             it.popTap()
             Handler(Looper.getMainLooper()).postDelayed({
-
+              findNavController().navigate(R.id.action_profileFragment_to_addProductFragment)
             }, UiConstValue.FAST_ANIMATION_TIME)
         }
     }

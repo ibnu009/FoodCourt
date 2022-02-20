@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 class BaseApp : Application() {
 
     companion object {
-        const val notificationChannelID = "JelajahinChannel"
+        const val notificationChannelID = "FoodCourtChannel"
     }
 
     private fun createNotificationChannel() {

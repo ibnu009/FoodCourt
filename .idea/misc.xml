@@ -7,12 +7,14 @@
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_button.xml" value="0.2074074074074074" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_cirle.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_input.xml" value="0.2074074074074074" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_price.xml" value="0.18" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_price_right.xml" value="0.18518518518518517" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/bg_searchview.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/circle.xml" value="0.2203125" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/ic_logout.xml" value="0.18981481481481483" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/drawable/skeleton.xml" value="0.1935185185185185" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/add_product_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/add_product_fragment.xml" value="0.33" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/checkout_fragment.xml" value="0.20416666666666666" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding.xml" value="0.20416666666666666" />
         <entry key="..\:/2. On Going Project/FoodCourt/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.2" />

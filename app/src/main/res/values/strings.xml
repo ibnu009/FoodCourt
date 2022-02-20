@@ -16,4 +16,20 @@
     <string name="empty_product">Menu untuk kategori ini kosong, Tambahkan di menu tambah product!</string>
     <string name="report">Report Transaction</string>
     <string name="logout">Logout</string>
+    <string name="new_photo">New Photo</string>
+    <string name="category">Category</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="save">Save</string>
+    <string-array name="pictures">
+        <item>Ambil foto</item>
+        <item>Dari galeri</item>
+    </string-array>
+
+    <string-array name="categories">
+        <item>Minuman</item>
+        <item>Makanan</item>
+        <item>Snack</item>
+        <item>Cemilan</item>
+    </string-array>
 </resources>

@@ -5,6 +5,8 @@ import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import kotlin.system.exitProcess
 
+
+
 fun Activity.showExitFoodCourtDialog(){
     AlertDialog.Builder(this).apply {
         setTitle("Keluar Aplikasi")

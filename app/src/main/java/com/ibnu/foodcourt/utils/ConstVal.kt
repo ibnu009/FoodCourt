@@ -2,6 +2,7 @@ package com.ibnu.foodcourt.utils
 
 object ConstVal {
     const val BASE_URL = "https://foodcourt.dwtech.id/api/"
+    const val URL_UPLOAD_PRODUCT = "https://foodcourt.dwtech.id/api/add-product"
 
     const val PREFS_NAME = "foodcourt.pref"
     const val KEY_TOKEN = "key.token"
