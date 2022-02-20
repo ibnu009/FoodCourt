@@ -1,5 +1,6 @@
 package com.ibnu.foodcourt.data.repository
 
+import com.ibnu.foodcourt.data.model.User
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.data.remote.request.LoginBody
 import com.ibnu.foodcourt.data.remote.response.user.UserLoginResponse
@@ -18,5 +19,10 @@ class UserRepository @Inject constructor(
     suspend fun login(request: LoginBody): Flow<ApiResponse<UserLoginResponse>> {
         return userDataSource.loginUser(request).flowOn(Dispatchers.IO)
     }
+
+    suspend fun getUserProfile(token: String): Flow<ApiResponse<User>> {
+        return userDataSource.getUserProfile(token).flowOn(Dispatchers.IO)
+    }
+
 
 }

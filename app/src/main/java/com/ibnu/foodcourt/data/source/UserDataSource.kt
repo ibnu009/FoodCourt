@@ -1,5 +1,6 @@
 package com.ibnu.foodcourt.data.source
 
+import com.ibnu.foodcourt.data.model.User
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.data.remote.network.UserService
 import com.ibnu.foodcourt.data.remote.request.LoginBody
@@ -18,12 +19,24 @@ class UserDataSource @Inject constructor(private val userService: UserService){
             try {
                 emit(ApiResponse.Loading)
                 val response = userService.loginUser(request)
-                if (response.status == HttpURLConnection.HTTP_OK){
+                if (response.status == HttpURLConnection.HTTP_OK) {
                     emit(ApiResponse.Success(response))
                 } else {
                     emit(ApiResponse.Error(response.message ?: "Gagal"))
                 }
-            } catch (e: Exception){
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.message.toString()))
+            }
+        }
+    }
+
+    suspend fun getUserProfile(token: String): Flow<ApiResponse<User>> {
+        return flow {
+            try {
+                emit(ApiResponse.Loading)
+                val response = userService.getProfile(token)
+                emit(ApiResponse.Success(response.data))
+            } catch (e: Exception) {
                 emit(ApiResponse.Error(e.message.toString()))
             }
         }

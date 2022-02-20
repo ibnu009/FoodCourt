@@ -14,4 +14,6 @@
     <string name="price_default">Rp 0</string>
     <string name="item_default">0 items</string>
     <string name="empty_product">Menu untuk kategori ini kosong, Tambahkan di menu tambah product!</string>
+    <string name="report">Report Transaction</string>
+    <string name="logout">Logout</string>
 </resources>

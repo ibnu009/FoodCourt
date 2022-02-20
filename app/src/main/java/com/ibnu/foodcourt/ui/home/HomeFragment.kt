@@ -7,10 +7,13 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ibnu.foodcourt.R
 import com.ibnu.foodcourt.data.model.Product
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.databinding.HomeFragmentBinding
@@ -20,6 +23,7 @@ import com.ibnu.foodcourt.ui.home.adapter.ProductAdapter
 import com.ibnu.foodcourt.ui.home.adapter.ProductItemHandler
 import com.ibnu.foodcourt.utils.SharedPreferenceManager
 import com.ibnu.foodcourt.utils.ext.popTap
+import com.ibnu.foodcourt.utils.ext.showExitFoodCourtDialog
 import com.ibnu.foodcourt.utils.ext.toRupiah
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -40,6 +44,17 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
 
     private lateinit var pref: SharedPreferenceManager
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    requireActivity().showExitFoodCourtDialog()
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,14 +68,28 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPreferenceManager(requireContext())
 
+        if(cartQuantity > 0){
+            binding.txvTotalPrice.text = cartTotalPrice.toRupiah()
+            binding.txvCartQuantity.text = "$cartQuantity items"
+        }
+
         initiateAdapters()
         showCategories()
         showProducts(2)
 
         binding.btnPerson.setOnClickListener {
             it.popTap()
+            isAlreadyLoadingShimmering = false
             Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(R.id.action_homeFragment_to_profileFragment2)
+            }, 200)
+        }
 
+        binding.btnCart.setOnClickListener {
+            it.popTap()
+            isAlreadyLoadingShimmering = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
             }, 200)
         }
     }
