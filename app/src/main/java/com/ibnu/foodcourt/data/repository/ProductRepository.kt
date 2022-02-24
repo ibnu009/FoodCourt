@@ -3,6 +3,7 @@ package com.ibnu.foodcourt.data.repository
 import com.ibnu.foodcourt.data.model.Category
 import com.ibnu.foodcourt.data.model.Product
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
+import com.ibnu.foodcourt.data.source.OrderDataSource
 import com.ibnu.foodcourt.data.source.ProductDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ProductRepository @Inject constructor(private val productDataSource: ProductDataSource) {
+class ProductRepository @Inject constructor(
+    private val orderDataSource: OrderDataSource,
+    private val productDataSource: ProductDataSource) {
 
     suspend fun getProducts(standId: Int, categoryId: Int, token: String): Flow<ApiResponse<List<Product>>> {
         return productDataSource.getProductListFlow(standId, categoryId, token).flowOn(Dispatchers.IO)
@@ -21,5 +24,11 @@ class ProductRepository @Inject constructor(private val productDataSource: Produ
         return productDataSource.getCategoriesFlow(token).flowOn(Dispatchers.IO)
     }
 
+    suspend fun insertToCart(product: Product) =
+        productDataSource.insertToCart(product)
+
+    suspend fun getOrderItemTotal() = orderDataSource.getOrderItemTotal()
+
+    suspend fun getOrderPriceTotal() = orderDataSource.getOrderTotalPrice()
 
 }

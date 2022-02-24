@@ -93,7 +93,7 @@
                 android:id="@+id/rvMenu"
                 tools:listitem="@layout/item_menu"
                 android:layout_width="match_parent"
-                android:paddingBottom="@dimen/space"
+                android:paddingBottom="@dimen/space_double"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

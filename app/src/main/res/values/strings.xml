@@ -21,6 +21,9 @@
     <string name="name">Name</string>
     <string name="price">Price</string>
     <string name="save">Save</string>
+    <string name="order">Order</string>
+    <string name="total_price">Total Price</string>
+    <string name="checkout">Checkout</string>
     <string-array name="pictures">
         <item>Ambil foto</item>
         <item>Dari galeri</item>

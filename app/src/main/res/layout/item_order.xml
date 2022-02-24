@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/space"
+    app:cardElevation="@dimen/space"
+    android:paddingVertical="@dimen/space"
+    android:layout_marginHorizontal="@dimen/space_double"
+    android:layout_marginVertical="@dimen/space"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imvOrder"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            tools:background="@color/light_red_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvOrderName"
+            tools:text="Salmon Salad"
+            android:textSize="@dimen/font_medium"
+            android:textStyle="bold"
+            android:fontFamily="@font/lato_bold"
+            android:layout_marginHorizontal="@dimen/space_double"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imvOrder"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txvOrderPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_double"
+            android:layout_marginTop="@dimen/space"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato"
+            android:maxLines="2"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/font_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imvOrder"
+            app:layout_constraintTop_toBottomOf="@id/txvOrderName"
+            tools:text="Rp 50.000" />
+
+        <ImageButton
+            android:id="@+id/btnDecrementQuantity"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/space_double"
+            android:background="@drawable/circle"
+            android:layout_marginTop="@dimen/space_double"
+            android:backgroundTint="@color/green_button"
+            android:src="@drawable/ic_minus"
+            app:layout_constraintStart_toEndOf="@+id/imvOrder"
+            app:layout_constraintTop_toBottomOf="@+id/txvOrderPrice"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/txvCartQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_double"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato_bold"
+            android:maxLines="2"
+            android:textSize="@dimen/font_medium"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDecrementQuantity"
+            app:layout_constraintStart_toEndOf="@+id/btnDecrementQuantity"
+            app:layout_constraintTop_toTopOf="@+id/btnDecrementQuantity"
+            tools:text="1" />
+
+        <ImageButton
+            android:id="@+id/btnIncrementQuantity"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="@dimen/space_double"
+            android:background="@drawable/circle"
+            android:layout_marginStart="@dimen/space_double"
+            android:backgroundTint="@color/green_button"
+            android:src="@drawable/ic_add"
+            app:layout_constraintStart_toEndOf="@+id/txvCartQuantity"
+            app:layout_constraintTop_toBottomOf="@+id/txvOrderPrice"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/btnRemoveFromOrder"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/space_double"
+            android:layout_marginTop="@dimen/space_double"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/red_icon"
+            android:src="@drawable/ic_trash"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/space"
+            app:layout_constraintTop_toBottomOf="@+id/txvOrderPrice"
+            app:tint="@color/white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_double"
+            app:layout_constraintStart_toEndOf="@+id/imvOrder"
+            app:layout_constraintTop_toBottomOf="@+id/btnIncrementQuantity" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

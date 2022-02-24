@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="5"
+    android:layout_marginVertical="@dimen/space"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/txvProductName"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        tools:text="Salmon Salad"
+        android:layout_marginHorizontal="@dimen/space_double"
+        android:textColor="@color/grey_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:text="txvProductSubTotal"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:gravity="end"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/space_double"
+        android:textColor="@color/grey_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvProductName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Rp 65.000" />
+
+</LinearLayout>

@@ -29,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
+@SuppressLint("SetTextI18n")
 class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
 
     private val viewModel: HomeViewModel by viewModels()
@@ -71,6 +72,8 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
         if(cartQuantity > 0){
             binding.txvTotalPrice.text = cartTotalPrice.toRupiah()
             binding.txvCartQuantity.text = "$cartQuantity items"
+        } else {
+            loadLocalCartData()
         }
 
         initiateAdapters()
@@ -89,6 +92,7 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
             it.popTap()
             isAlreadyLoadingShimmering = false
             Handler(Looper.getMainLooper()).postDelayed({
+
                 findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
             }, 200)
         }
@@ -183,13 +187,26 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
         }
     }
 
-    @SuppressLint("SetTextI18n")
+    private fun loadLocalCartData(){
+        viewModel.getOrderItemTotal().observe(viewLifecycleOwner, { totalItem ->
+            cartQuantity = totalItem
+            binding.txvCartQuantity.text = "$cartQuantity items"
+        })
+
+        viewModel.getOrderTotalPrice().observe(viewLifecycleOwner, { totalPrice ->
+            cartTotalPrice = totalPrice
+            binding.txvTotalPrice.text = cartTotalPrice.toRupiah()
+        })
+    }
+
     override fun addToCart(product: Product, price: Int) {
         cartQuantity++
         cartTotalPrice += price
 
         binding.txvTotalPrice.text = cartTotalPrice.toRupiah()
         binding.txvCartQuantity.text = "$cartQuantity items"
+
+        viewModel.insertProductToCart(product)
     }
 
     override fun onCategoryItemClicked(categoryId: Int) {

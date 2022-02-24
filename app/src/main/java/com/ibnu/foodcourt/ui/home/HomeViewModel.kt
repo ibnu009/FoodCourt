@@ -9,6 +9,7 @@ import com.ibnu.foodcourt.data.model.Product
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.data.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,7 +18,6 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
-
 
     fun getProducts(standId: Int, categoryId: Int, token: String): LiveData<ApiResponse<List<Product>>> {
         val result = MutableLiveData<ApiResponse<List<Product>>>()
@@ -35,6 +35,28 @@ class HomeViewModel @Inject constructor(
             productRepository.getCategories(token).collect {
                 result.postValue(it)
             }
+        }
+        return result
+    }
+
+    fun insertProductToCart(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            productRepository.insertToCart(product)
+        }
+    }
+
+    fun getOrderItemTotal() : LiveData<Int> {
+        val result = MutableLiveData<Int>()
+        viewModelScope.launch(Dispatchers.IO) {
+            result.postValue(productRepository.getOrderItemTotal())
+        }
+        return result
+    }
+
+    fun getOrderTotalPrice(): LiveData<Int> {
+        val result = MutableLiveData<Int>()
+        viewModelScope.launch(Dispatchers.IO) {
+            result.postValue(productRepository.getOrderPriceTotal())
         }
         return result
     }

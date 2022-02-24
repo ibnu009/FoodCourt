@@ -12,9 +12,9 @@
         layout="@layout/toolbar_back_name" />
 
     <ScrollView
-        android:layout_below="@id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -48,48 +48,43 @@
                 android:id="@+id/txvCategoryStatic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_bold"
-                android:textSize="@dimen/font_big"
-                android:layout_marginTop="@dimen/space_quadruple"
                 android:layout_marginHorizontal="@dimen/space_double"
+                android:layout_marginTop="@dimen/space_quadruple"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/category"
+                android:textSize="@dimen/font_big"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinnerCategory"
-                android:background="@drawable/bg_searchview"
-                android:backgroundTint="@color/secondary_color"
-                android:entries="@array/categories"
-                android:textAlignment="textStart"
-                android:layout_marginStart="@dimen/space_quadruple"
-                android:paddingHorizontal="@dimen/space_triple"
-                android:paddingVertical="@dimen/space_double"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_marginTop="@dimen/space_double"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/txvCategoryStatic"
-                app:layout_constraintStart_toEndOf="@+id/txvCategoryStatic"
-                app:layout_constraintTop_toTopOf="@+id/txvCategoryStatic" />
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/txvCategoryStatic"
+                tools:listitem="@layout/item_category" />
 
             <TextView
                 android:id="@+id/txvNameStatic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_quadruple"
+                android:layout_marginTop="@dimen/space_triple"
                 android:layout_marginHorizontal="@dimen/space_double"
                 android:fontFamily="@font/poppins_bold"
                 android:text="@string/name"
                 android:textSize="@dimen/font_big"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txvCategoryStatic" />
+                app:layout_constraintTop_toBottomOf="@+id/rvCategories" />
 
             <EditText
                 android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/space_double"
-                android:background="@drawable/bg_input"
                 android:layout_marginTop="@dimen/space"
+                android:background="@drawable/bg_input"
                 android:hint="@string/name"
                 android:padding="16dp"
                 android:textColor="@color/black"
@@ -102,8 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/space_double"
-                android:fontFamily="@font/poppins_bold"
                 android:layout_marginTop="@dimen/space_double"
+                android:fontFamily="@font/poppins_bold"
                 android:text="@string/price"
                 android:textSize="@dimen/font_big"
                 app:layout_constraintStart_toStartOf="parent"
@@ -123,10 +118,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="@drawable/bg_price"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
                     android:padding="16dp"
                     android:text="Rp."
-                    android:gravity="center"
-                    android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/secondary_color"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,10 +136,10 @@
                     android:hint="@string/price"
                     android:inputType="number"
                     android:padding="16dp"
-                    android:textStyle="bold"
                     android:textAlignment="textStart"
                     android:textColor="@color/black"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toEndOf="@+id/txPriceStaticcc"
                     app:layout_constraintTop_toBottomOf="@+id/txvPriceStatic" />
 
@@ -156,17 +151,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingVertical="@dimen/space_double"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="@dimen/space_quintuple"
                 android:background="@drawable/bg_button"
                 android:padding="10dp"
+                android:paddingVertical="@dimen/space_double"
                 android:text="@string/save"
-                android:layout_marginTop="@dimen/space_quintuple"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+            <View
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                android:layout_height="@dimen/space_triple"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

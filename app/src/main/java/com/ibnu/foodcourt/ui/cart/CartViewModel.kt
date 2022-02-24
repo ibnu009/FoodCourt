@@ -1,7 +1,13 @@
 package com.ibnu.foodcourt.ui.cart
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CartViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+@HiltViewModel
+class CartViewModel @Inject constructor() : ViewModel() {
+
+
+
+
 }

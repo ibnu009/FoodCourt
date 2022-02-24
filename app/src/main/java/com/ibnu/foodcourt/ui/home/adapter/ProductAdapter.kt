@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.ibnu.foodcourt.R
 import com.ibnu.foodcourt.data.model.Product
 import com.ibnu.foodcourt.databinding.ItemMenuBinding
-import com.ibnu.foodcourt.utils.ConstVal.BASE_URL
+import com.ibnu.foodcourt.utils.ConstVal.BASE_IMAGE_URL
 import com.ibnu.foodcourt.utils.ext.popTap
 import com.ibnu.foodcourt.utils.ext.toRupiah
 
@@ -56,7 +56,7 @@ class ProductAdapter(private val itemHandler: ProductItemHandler) :
             binding.txvMenuPrice.text = product.price.toRupiah()
 
             Glide.with(binding.root.context)
-                .load("${BASE_URL}${product.thumbnail}")
+                .load("${BASE_IMAGE_URL}${product.thumbnail}")
                 .placeholder(R.color.input_color)
                 .into(binding.imgMenu)
         }

@@ -15,8 +15,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ibnu.foodcourt.R
+import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.databinding.AddProductFragmentBinding
+import com.ibnu.foodcourt.ui.home.adapter.CategoryAdapter
+import com.ibnu.foodcourt.ui.home.adapter.CategoryItemHandler
+import com.ibnu.foodcourt.ui.home.adapter.ProductAdapter
 import com.ibnu.foodcourt.utils.NumberTextWatcher
 import com.ibnu.foodcourt.utils.PostStateHandler
 import com.ibnu.foodcourt.utils.SharedPreferenceManager
@@ -26,9 +32,10 @@ import com.ibnu.foodcourt.utils.ext.getImageUri
 import com.ibnu.foodcourt.utils.ext.popTap
 import com.ibnu.foodcourt.utils.ext.showOKDialog
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
-class AddProductFragment : Fragment(), PostStateHandler {
+class AddProductFragment : Fragment(), PostStateHandler, CategoryItemHandler {
 
     private val viewModel: AddProductViewModel by viewModels()
 
@@ -36,6 +43,9 @@ class AddProductFragment : Fragment(), PostStateHandler {
     private val binding get() = _binding!!
     private var imagePath: String? = null
     private lateinit var pref: SharedPreferenceManager
+    private lateinit var categoriesAdapter: CategoryAdapter
+    private var categoryId = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +74,8 @@ class AddProductFragment : Fragment(), PostStateHandler {
         val token: String = pref.getToken ?: ""
         viewModel.postState = this
         initiateAppBar()
+        initiateAdapters()
+        showCategories()
 
         binding.btnProductImage.setOnClickListener {
             it.popTap()
@@ -76,15 +88,13 @@ class AddProductFragment : Fragment(), PostStateHandler {
         binding.edtPrice.keyListener = DigitsKeyListener.getInstance("0123456789")
         binding.btnSave.setOnClickListener {
             it.popTap()
-            val selectedCategory = binding.spinnerCategory.selectedItem.toString()
-            val categoryId = categoryNameToCategoryId(selectedCategory)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 viewModel.validateUploadProduct(
                     requireContext(),
                     viewLifecycleOwner,
                     standId.toString(),
-                    categoryId,
+                    categoryId.toString(),
                     binding.edtName.text.toString(),
                     binding.edtPrice.text.toString(),
                     imagePath ?: "",
@@ -101,7 +111,35 @@ class AddProductFragment : Fragment(), PostStateHandler {
             it.popTap()
             findNavController().popBackStack()
         }
+    }
 
+    private fun initiateAdapters() {
+        categoriesAdapter = CategoryAdapter(this)
+        binding.rvCategories.apply {
+            layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = categoriesAdapter
+        }
+    }
+
+    private fun showCategories() {
+        val token = pref.getToken ?: ""
+        viewModel.getCategories(token).observe(viewLifecycleOwner, { response ->
+            when (response) {
+                is ApiResponse.Loading -> {
+                    Timber.d("Loading")
+                }
+                is ApiResponse.Error -> {
+                    Timber.d("Error ${response.errorMessage}")
+                }
+                is ApiResponse.Success -> {
+                    categoriesAdapter.setData(response.data)
+                }
+                else -> {
+                    Timber.d("Unknown Error")
+                }
+            }
+        })
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -199,6 +237,10 @@ class AddProductFragment : Fragment(), PostStateHandler {
     override fun onFailure(message: String) {
         showLoading(false)
         requireContext().showOKDialog("Gagal", message)
+    }
+
+    override fun onCategoryItemClicked(categoryId: Int) {
+        this.categoryId = categoryId
     }
 
 }

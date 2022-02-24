@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black_dim">#74000000</color>
+    <color name="bg_order">#3b3b3b</color>
+    <color name="bg_order_ligher">#414141</color>
+
     <color name="secondary_color">#F58634</color>
     <color name="bg_add_product_color">#FBDFCB</color>
 
