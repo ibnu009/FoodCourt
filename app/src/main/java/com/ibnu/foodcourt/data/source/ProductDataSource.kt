@@ -7,6 +7,8 @@ import com.ibnu.foodcourt.data.model.Order
 import com.ibnu.foodcourt.data.model.Product
 import com.ibnu.foodcourt.data.remote.network.ApiResponse
 import com.ibnu.foodcourt.data.remote.network.ProductService
+import com.ibnu.foodcourt.data.remote.request.Transaction
+import com.ibnu.foodcourt.data.remote.request.TransactionBody
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.net.HttpURLConnection
@@ -75,6 +77,22 @@ class ProductDataSource @Inject constructor(
                 quantity = 1
             )
             orderDao.addOrderToCart(order)
+        }
+    }
+
+    suspend fun postTransaction(transaction : TransactionBody, token: String): Flow<ApiResponse<String>>{
+        return flow {
+            try {
+                emit(ApiResponse.Loading)
+                val response = productService.postTransaction(token,transaction)
+                if (response.status == HttpURLConnection.HTTP_OK) {
+                    emit(ApiResponse.Success(response.message))
+                } else {
+                    emit(ApiResponse.Error(response.message))
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.message.toString()))
+            }
         }
     }
 

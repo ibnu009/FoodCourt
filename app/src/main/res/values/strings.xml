@@ -24,6 +24,14 @@
     <string name="order">Order</string>
     <string name="total_price">Total Price</string>
     <string name="checkout">Checkout</string>
+    <string name="buyer_s_name">Buyer\'s name</string>
+    <string name="buyer">Buyer</string>
+    <string name="dine_in">Dine in</string>
+    <string name="dine_in_des">Add order table number.</string>
+    <string name="table_number">Table number</string>
+    <string name="take_away">Take Away</string>
+    <string name="pay">Pay</string>
+    <string name="back">Back</string>
     <string-array name="pictures">
         <item>Ambil foto</item>
         <item>Dari galeri</item>

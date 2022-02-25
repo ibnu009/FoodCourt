@@ -1,13 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.checkout.CheckoutFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/toolbar_back_name"/>
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_triple"
+            android:layout_marginTop="@dimen/space_double"
+            app:cardCornerRadius="@dimen/space"
+            app:cardElevation="@dimen/space">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/space_double"
+                android:layout_marginVertical="@dimen/space_triple"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/buyer"
+                    android:textColor="@color/grey_800"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edtBuyerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space"
+                    android:background="@drawable/bg_input"
+                    android:hint="@string/buyer_s_name"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@+id/txvEnterAccount"
+                    tools:layout_editor_absoluteX="16dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/lyDineIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space"
+            android:layout_marginHorizontal="@dimen/space_double"
+            android:layout_marginTop="@dimen/space_triple"
+            android:clickable="true">
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_cirle_border">
+
+                <RelativeLayout
+                    android:id="@+id/indicatorDineIn"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/secondary_color" />
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_double"
+                android:layout_marginStart="@dimen/space_double"
+                app:cardCornerRadius="@dimen/space"
+                app:cardElevation="@dimen/space">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardDineIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_order_ligher">
+
+                    <TextView
+                        android:id="@+id/txvDineIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/space_double"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/dine_in"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/dine_in_des"
+                        android:textColor="@color/grey_400"
+                        android:textSize="@dimen/font_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvDineIn" />
+
+                    <TextView
+                        android:id="@+id/txv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/space_double"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/table_number"
+                        android:textColor="@color/secondary_color"
+                        android:textSize="@dimen/font_small"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+                    <EditText
+                        android:id="@+id/edtTable"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_double"
+                        android:background="@drawable/bg_input"
+                        android:hint="0"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txv1"
+                        app:layout_constraintStart_toEndOf="@+id/txv1"
+                        app:layout_constraintTop_toTopOf="@+id/txv1" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/space_double"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/edtTable" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lyTakeAway"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space"
+            android:layout_marginHorizontal="@dimen/space_double"
+            android:layout_marginTop="@dimen/space_triple"
+            android:clickable="true">
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_cirle_border">
+
+                <RelativeLayout
+                    android:id="@+id/indicatorTakeAway"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/secondary_color"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_double"
+                android:layout_marginStart="@dimen/space_double"
+                app:cardCornerRadius="@dimen/space"
+                app:cardElevation="@dimen/space">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardTakeAway"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txvTakeAway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/space_double"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/take_away"
+                        android:textColor="@color/grey_800"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView55"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space"
+                        android:fontFamily="@font/lato"
+                        android:text="@string/dine_in_des"
+                        android:textColor="@color/grey_400"
+                        android:textSize="@dimen/font_small"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txvTakeAway" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="@dimen/space_double"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="@dimen/space_triple"/>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnPay"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space_double"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_button"
+        android:padding="10dp"
+        android:text="@string/pay"
+        android:textAllCaps="false"
+        android:fontFamily="@font/lato_bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_medium" />
+
+    <View
+        android:id="@+id/bg_dim"
+        android:visibility="gone"
+        android:background="@color/black_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

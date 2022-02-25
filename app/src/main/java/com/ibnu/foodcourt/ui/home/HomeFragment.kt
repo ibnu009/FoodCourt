@@ -151,6 +151,7 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
             layoutManager =
                 GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
             adapter = productAdapter
+            isNestedScrollingEnabled = false
         }
 
         categoriesAdapter = CategoryAdapter(this)

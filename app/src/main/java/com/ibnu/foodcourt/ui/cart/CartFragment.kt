@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ibnu.foodcourt.R
 import com.ibnu.foodcourt.data.model.Order
 import com.ibnu.foodcourt.databinding.CartFragmentBinding
 import com.ibnu.foodcourt.ui.cart.adapter.OrderAdapter
@@ -24,6 +26,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint
+@SuppressLint("SetTextI18n")
 class CartFragment : Fragment(), OrderItemHandler {
 
     private val viewModel: CartViewModel by viewModels()
@@ -33,6 +36,9 @@ class CartFragment : Fragment(), OrderItemHandler {
 
     private lateinit var orderAdapter: OrderAdapter
     private lateinit var orderSubtotalAdapter: OrderSubtotalAdapter
+
+    private var grandTotal = 0
+    private var totalItems = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,15 +53,16 @@ class CartFragment : Fragment(), OrderItemHandler {
 
         initiateAdapters()
         initiateAppBar()
-        updateGrandTotal()
+        setGrandTotal()
         viewModel.getAllOrders().observe(viewLifecycleOwner, {
             orderAdapter.setData(it)
             orderSubtotalAdapter.setData(it)
         })
 
         binding.btnCheckOut.setOnClickListener {
+            it.popTap()
             Handler(Looper.getMainLooper()).postDelayed({
-                findNavController().popBackStack()
+                findNavController().navigate(R.id.action_cartFragment_to_checkoutFragment)
             }, UiConstValue.FAST_ANIMATION_TIME)
         }
     }
@@ -82,6 +89,7 @@ class CartFragment : Fragment(), OrderItemHandler {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = orderAdapter
+            isNestedScrollingEnabled = false
         }
 
         orderSubtotalAdapter = OrderSubtotalAdapter()
@@ -89,6 +97,7 @@ class CartFragment : Fragment(), OrderItemHandler {
             layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
             adapter = orderSubtotalAdapter
+            isNestedScrollingEnabled = false
         }
     }
 
@@ -100,31 +109,63 @@ class CartFragment : Fragment(), OrderItemHandler {
     override fun onIncrementOrderQuantity(order: Order, position: Int) {
         viewModel.updateOrder(order)
         Timber.d("Position is $position")
+        incrementGrandTotal(order)
         orderSubtotalAdapter.changeData(order, position)
-        updateGrandTotal()
     }
 
     override fun onDecrementOrderQuantity(order: Order, position: Int) {
         viewModel.updateOrder(order)
         Timber.d("Position is $position")
+        if(order.quantity > 1){
+            decrementGrandTotal(order)
+        }
         orderSubtotalAdapter.changeData(order, position)
-        updateGrandTotal()
     }
 
     override fun onDeleteOrder(order: Order, position: Int) {
         showDeleteItemDialog(order, position)
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun updateGrandTotal() {
+    private fun setGrandTotal() {
         viewModel.getOrderItemTotal().observe(viewLifecycleOwner, {
             binding.txvProductTotal.text = "$it Items"
+            totalItems = it
         })
 
         viewModel.getOrderTotalPrice().observe(viewLifecycleOwner, {
             binding.txvGrandTotalSmall.text = it.toRupiah()
             binding.txvGrandTotal.text = it.toRupiah()
+            grandTotal = it
         })
+    }
+
+    private fun decrementGrandTotal(order: Order) {
+        grandTotal -= order.price
+        totalItems--
+
+        binding.txvProductTotal.text = "$totalItems Items"
+        binding.txvGrandTotalSmall.text = grandTotal.toRupiah()
+        binding.txvGrandTotal.text = grandTotal.toRupiah()
+    }
+
+    private fun incrementGrandTotal(order: Order) {
+        grandTotal += order.price
+        totalItems++
+
+        Timber.d("incrementedGrandTotal is $grandTotal")
+
+        binding.txvProductTotal.text = "$totalItems Items"
+        binding.txvGrandTotalSmall.text = grandTotal.toRupiah()
+        binding.txvGrandTotal.text = grandTotal.toRupiah()
+    }
+
+    private fun deleteGrandTotal(order: Order){
+        grandTotal -= (order.price * order.quantity)
+        totalItems -= order.quantity
+
+        binding.txvProductTotal.text = "$totalItems Items"
+        binding.txvGrandTotalSmall.text = grandTotal.toRupiah()
+        binding.txvGrandTotal.text = grandTotal.toRupiah()
     }
 
     private fun showDeleteItemDialog(order: Order, position: Int) {
@@ -139,7 +180,7 @@ class CartFragment : Fragment(), OrderItemHandler {
                 viewModel.removeOrder(order)
                 orderAdapter.removeItem(position)
                 orderSubtotalAdapter.removeItem(position)
-                updateGrandTotal()
+                deleteGrandTotal(order)
             }
         }.create().show()
     }

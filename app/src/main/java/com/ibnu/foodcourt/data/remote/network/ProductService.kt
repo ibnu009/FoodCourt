@@ -1,10 +1,10 @@
 package com.ibnu.foodcourt.data.remote.network
 
+import com.ibnu.foodcourt.data.remote.request.TransactionBody
+import com.ibnu.foodcourt.data.remote.response.GenericResponse
 import com.ibnu.foodcourt.data.remote.response.product.CategoriesResponse
 import com.ibnu.foodcourt.data.remote.response.product.ProductResponse
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ProductService {
 
@@ -18,4 +18,10 @@ interface ProductService {
     suspend fun getCategories(
         @Header("Authorization") token: String
     ): CategoriesResponse
+
+    @POST("transaction")
+    suspend fun postTransaction(
+        @Header("Authorization") token: String,
+        @Body request: TransactionBody
+    ): GenericResponse
 }

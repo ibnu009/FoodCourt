@@ -19,12 +19,15 @@
     <color name="input_color">#2061B15A</color>
     <color name="titleDescription">#7A7A7A</color>
     <color name="green_button">#61B15A</color>
+    <color name="green_button_light">#85C180</color>
+
     <color name="green_lighter">#D6EAD4</color>
     <color name="light_red_bg">#DD8391</color>
     <color name="red_icon">#EC255A</color>
 
 
     <color name="darker_green_button">#418A3B</color>
+    <color name="green_background">#61B15A</color>
 
 
     <color name="grey_50">#FAFAFA</color>

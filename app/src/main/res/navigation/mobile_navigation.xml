@@ -63,7 +63,11 @@
         android:id="@+id/checkoutFragment"
         android:name="com.ibnu.foodcourt.ui.checkout.CheckoutFragment"
         android:label="checkout_fragment"
-        tools:layout="@layout/checkout_fragment" />
+        tools:layout="@layout/checkout_fragment" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_postCheckoutFragment"
+            app:destination="@id/postCheckoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.ibnu.foodcourt.ui.profile.ProfileFragment"
@@ -89,4 +93,16 @@
         android:name="com.ibnu.foodcourt.ui.profile.report.ReportFragment"
         android:label="report_fragment"
         tools:layout="@layout/report_fragment" />
+    <fragment
+        android:id="@+id/postCheckoutFragment"
+        android:name="com.ibnu.foodcourt.ui.checkout.PostCheckoutFragment"
+        android:label="fragment_post_checkout"
+        tools:layout="@layout/fragment_post_checkout" >
+        <action
+            android:id="@+id/action_postCheckoutFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

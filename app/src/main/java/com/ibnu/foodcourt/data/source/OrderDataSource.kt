@@ -2,6 +2,7 @@ package com.ibnu.foodcourt.data.source
 
 import com.ibnu.foodcourt.data.local.dao.OrderDao
 import com.ibnu.foodcourt.data.model.Order
+import com.ibnu.foodcourt.data.remote.network.ProductService
 import javax.inject.Inject
 import javax.inject.Singleton
 
