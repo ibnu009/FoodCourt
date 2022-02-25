@@ -12,6 +12,8 @@ class OrderDataSource @Inject constructor(
 
     suspend fun getAllOrder(): List<Order> = orderDao.getAllOrders()
 
+    suspend fun removeOrder(order: Order) = orderDao.removeOrderFromCart(order)
+
     suspend fun getOrderItemTotal(): Int {
         val orders = orderDao.getAllOrders()
         var itemTotal = 0
@@ -29,6 +31,14 @@ class OrderDataSource @Inject constructor(
             totalPrice += (order.price * order.quantity)
         }
         return totalPrice
+    }
+
+    suspend fun clearOrder() {
+        orderDao.removeAllItem()
+    }
+
+    suspend fun updateOrder(order: Order) {
+        orderDao.updateOrder(order)
     }
 
 }

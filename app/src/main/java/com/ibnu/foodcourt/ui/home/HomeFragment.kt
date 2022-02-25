@@ -69,12 +69,7 @@ class HomeFragment : Fragment(), ProductItemHandler, CategoryItemHandler {
         super.onViewCreated(view, savedInstanceState)
         pref = SharedPreferenceManager(requireContext())
 
-        if(cartQuantity > 0){
-            binding.txvTotalPrice.text = cartTotalPrice.toRupiah()
-            binding.txvCartQuantity.text = "$cartQuantity items"
-        } else {
-            loadLocalCartData()
-        }
+        loadLocalCartData()
 
         initiateAdapters()
         showCategories()

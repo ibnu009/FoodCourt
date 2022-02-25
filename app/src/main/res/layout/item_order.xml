@@ -7,7 +7,7 @@
     app:cardElevation="@dimen/space"
     android:paddingVertical="@dimen/space"
     android:layout_marginHorizontal="@dimen/space_double"
-    android:layout_marginVertical="@dimen/space"
+    android:layout_marginVertical="12dp"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +25,7 @@
 
         <TextView
             android:id="@+id/txvOrderName"
+            android:layout_marginTop="@dimen/space_double"
             tools:text="Salmon Salad"
             android:textSize="@dimen/font_medium"
             android:textStyle="bold"
@@ -110,7 +111,7 @@
             app:tint="@color/white" />
 
         <View
-            android:layout_width="0dp"
+            android:layout_width="2dp"
             android:layout_height="@dimen/space_double"
             app:layout_constraintStart_toEndOf="@+id/imvOrder"
             app:layout_constraintTop_toBottomOf="@+id/btnIncrementQuantity" />

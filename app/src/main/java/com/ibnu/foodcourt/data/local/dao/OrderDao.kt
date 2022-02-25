@@ -13,8 +13,12 @@ interface OrderDao {
     @Query("SELECT * FROM tbl_order")
     suspend fun getAllOrders(): List<Order>
 
+
     @Query("UPDATE tbl_order SET quantity =:quantity WHERE id = :productId")
     suspend fun updateOrderQuantity(quantity: Int, productId: Int)
+
+    @Update
+    suspend fun updateOrder(order: Order)
 
     @Query("SELECT EXISTS(SELECT * FROM tbl_order WHERE id = :productId)")
     suspend fun isProductExist(productId: Int): Boolean
@@ -24,4 +28,7 @@ interface OrderDao {
 
     @Delete
     suspend fun removeOrderFromCart(order: Order)
+
+    @Query("DELETE FROM tbl_order")
+    suspend fun removeAllItem()
 }
